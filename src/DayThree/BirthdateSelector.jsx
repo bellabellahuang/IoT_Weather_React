@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Label } from 'react-bootstrap';
 
 export default class BirthdateSelector extends Component {
     // set up the original state
@@ -92,20 +93,18 @@ export default class BirthdateSelector extends Component {
 
         return (
             <div>
-                <label>
-                    Day:
-                </label>
-                <div> 
-                    <select defaultValue="Day" onChange={this.setDay}>
+                <Label className="col-xs-3" bsStyle="info" style={{"font-size": "20px"}}>
+                    Birth Date:
+                </Label>
+                <div className="col-xs-3"> 
+                    <select defaultValue="Day" onChange={this.setDay} className="form-control">
                         <option value="Day" disabled hidden>Day</option>
                         {dayOptions}
                     </select>
                 </div>
-                <label>
-                    Month:
-                </label>
-                <div>
-                    <select defaultValue="Month" onChange={this.setMonth}>
+                
+                <div className="col-xs-3">
+                    <select defaultValue="Month" onChange={this.setMonth} className="form-control">
                         <option value="Month" disabled hidden>Month</option>
                         <option value="January">January</option>
                         <option value="February">February</option>
@@ -121,11 +120,9 @@ export default class BirthdateSelector extends Component {
                         <option value="December">December</option>                                                
                     </select>
                 </div>
-                <label>
-                    Year:
-                </label>
-                <div>
-                    <select defaultValue="Year" onChange={this.setYear}>
+                
+                <div className="col-xs-3">
+                    <select defaultValue="Year" onChange={this.setYear} className="form-control">
                         <option value="Year" disabled hidden>Year</option>
                         {yearOptions}
                     </select>

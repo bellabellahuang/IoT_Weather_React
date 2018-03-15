@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import ReusableSelectComponent from '../DayTwo/ReusableSelectComponent';
 
 export default class OptionSelect extends Component {
-    constructor () {
+    constructor (props) {
         super();
         this.state = {
-            options: [],
+            options: props.optionsArray,
             inputValue: "",
         }
     }
@@ -20,16 +20,16 @@ export default class OptionSelect extends Component {
 
         let options = this.state.options;
         options.push(this.state.inputValue);
-        this.setState({options: options});
+        this.setState({options: options, inputValue: ""});
 
         // console.log('options: ', this.state.options);
     }
 
     render () {
         return (
-            <div>
-                <input className="form-control" onChange={this.changeInput}>
-                </input>
+            <div className="options-selector">
+                <input className="form-control" onChange={this.changeInput} value={this.state.inputValue}>
+                </input>{this.state.inputValue}
                 <button className="btn btn-default" onClick={this.addNewOption}>Add New Option</button>
                 <ReusableSelectComponent optionsArray={this.state.options} />
             </div>

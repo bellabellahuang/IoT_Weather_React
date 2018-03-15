@@ -31,7 +31,7 @@ export default class ReusableSelect extends Component {
     }
 
     return (
-      <div >
+      <div className="col-xs-12" >
         <Label className="col-xs-3" bsStyle="info" style={{"font-size": "20px"}}>
           {this.props.label}
         </Label>
@@ -51,5 +51,5 @@ ReusableSelect.propTypes = {
 }
 
 ReusableSelect.defaultProps = {
-  optionsArray: ['1', '2', '3', '4', '5']
+  optionsArray: ['1', '2', '3', '4', '5'],
 }

@@ -10,6 +10,9 @@ import React, {Component} from 'react';
 import SignUpPage from './DayThree/SignUpPage';
 import HomePage from './DayFour/HomePage';
 import ReactStateTest from './DayFour/ReactStateTest';
+import ParentState from './DayFour/ParentState';
+import OptionSelect from './DayFour/OptionSelect';
+
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 // import logo from './logo.svg';
 import './App.css';
@@ -26,6 +29,8 @@ class App extends Component {
               <Route  exact path="/" component={HomePage}/>
               <Route  path="/Sign-Up" component={SignUpPage}/>
               <Route  path="/ReactStateTest" component={ReactStateTest}/>
+              <Route  path="/ParentState" component={ParentState}/>
+              <Route  path="/OptionSelect" component={OptionSelect}/>              
             </Switch>
           </div>
         </Router>

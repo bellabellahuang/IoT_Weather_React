@@ -29,7 +29,7 @@ export default class OptionSelect extends Component {
         return (
             <div className="options-selector">
                 <input className="form-control" onChange={this.changeInput} value={this.state.inputValue}>
-                </input>{this.state.inputValue}
+                </input>
                 <button className="btn btn-default" onClick={this.addNewOption}>Add New Option</button>
                 <ReusableSelectComponent optionsArray={this.state.options} />
             </div>

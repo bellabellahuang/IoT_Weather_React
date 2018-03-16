@@ -31,12 +31,12 @@ export default class ReusableSelect extends Component {
     }
 
     return (
-      <div className="col-xs-12" >
+      <div className={this.props.reusableSelectClass} >
         <Label className="col-xs-3" bsStyle="info" style={{"font-size": "20px"}}>
           {this.props.label}
         </Label>
-        <div className="col-xs-9">
-        <select onChange={this.onSelect} className="form-control">
+        <div className={this.props.selectorClass}>
+        <select onChange={(e) => {this.props.selectFunction(e.target.value)}} className="form-control">
           {options}
         </select>
         </div>
@@ -52,4 +52,6 @@ ReusableSelect.propTypes = {
 
 ReusableSelect.defaultProps = {
   optionsArray: ['1', '2', '3', '4', '5'],
+  selectorClass: "col-xs-9",
+  reusableSelectClass: "col-xs-12",
 }

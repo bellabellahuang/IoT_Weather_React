@@ -4,15 +4,22 @@ import PropTypes from 'prop-types';
 import { Label } from 'react-bootstrap';
 
 class InputComponent extends Component {
-  changeInput = function (event) {
-    console.log(event);
-  }
+  // if old function is used, you have to bind the function in the constructor so you can use this
+  // constructor () {
+  //   super();
+  //   this.changeInput = this.changeInput.bind(this);
+  // }
+
+  // changeInput = function (event) {
+  //   // console.log(event);
+  //   this.props.inputFunction(event.target.value);
+  // }
 
   render() {
     console.log('this.props');
     console.log(this.props);
     return (
-      <div>
+      <div className="col-xs-12">
         <Label className="col-xs-3" bsStyle="info" style={{"font-size": "20px"}}>
           {this.props.labelText}
         </Label>
@@ -20,11 +27,13 @@ class InputComponent extends Component {
           <input
             type={this.props.type}
             className="form-control"
+            min={this.props.min}
+            max={this.props.max}
             required={this.props.required}
             placeholder={this.props.placeholder}
             defaultValue={this.props.default}
             maxLength={this.props.maxLength}
-            onChange={this.changeInput}/>
+            onChange={(e) => {this.props.inputFunction(e.target.value)}}/>
         </div>
       </div>
     );
@@ -34,12 +43,13 @@ class InputComponent extends Component {
 InputComponent.defaultProps = {
   required: true,
   placeholder: "placeholder",
-  className: "react-input"
+  className: "react-input",
+  inputFunction: () => {},
 }
 
 InputComponent.propTypes = {
   required: PropTypes.bool,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
 }
 
 export default InputComponent;

@@ -92,7 +92,7 @@ export default class BirthdateSelector extends Component {
         }
 
         return (
-            <div>
+            <div className="col-xs-12">
                 <Label className="col-xs-3" bsStyle="info" style={{"font-size": "20px"}}>
                     Birth Date:
                 </Label>

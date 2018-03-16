@@ -10,7 +10,7 @@ export default class ParentState extends Component {
     }
 
     buttonClick = (e) => {
-        this.setState({counter: ++this.state.counter});       
+        this.setState({counter: this.state.counter+1});       
     }
 
     render () {

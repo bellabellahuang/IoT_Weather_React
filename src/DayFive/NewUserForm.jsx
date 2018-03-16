@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import BirthdateSelector from '../DayThree/BirthdateSelector';
 import InputComponent from '../DayOne/InputComponent.jsx';
 import PasswordInput from '../DayTwo/PasswordInput';
-import BootstrapTest from '../DayTwo/BootstrapTest';
+// import BootstrapTest from '../DayTwo/BootstrapTest';
 import OptionSelect from '../DayFour/OptionSelect';
 import ReusableSelect from '../DayTwo/ReusableSelectComponent';
 
@@ -108,7 +108,8 @@ export default class NewUserForm extends Component {
             optionsArray={["China", "Canada", "Janpan", "India"]} selectorClass="col-xs-9" label="Country: "
             selectFunction={this.setCountry} />
         <OptionSelect 
-            optionsArray={["ON", "BC", "AB"]} selectorClass="col-xs-3" label="Province: "
+            optionsArray={["ON", "BC", "AB"]} 
+            selectorClass="col-xs-3" label="Province: "
             selectFunction={this.setProvinceState}/>
 
         <button className="btn btn-danger" type="submit">Create User</button>

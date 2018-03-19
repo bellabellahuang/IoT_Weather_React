@@ -1,0 +1,16 @@
+#WeatherPage {
+    background-image: url('http://longwallpapers.com/Desktop-Wallpaper/sky-background-For-Desktop-Wallpaper.jpg');
+    color: white;
+}
+
+#WeatherPage .weather-box {
+    border: 1px solid black;
+}
+
+/* .weather-box:first {
+    background-color: red;
+} */
+
+.weather-icon {
+    font-size: 50px;
+}

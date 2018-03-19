@@ -57,7 +57,7 @@ export default class WeatherComponent extends Component {
         return (
             <div className="weather-component">
                 <h2>Weather Report For <span className="text-danger"><b><em>{this.state.city}, {this.state.country}</em></b></span></h2>
-                <h3 className="text-primary">{this.getWeatherIcon()} {this.state.temp} - {this.state.description}</h3>
+                <h3 className="text-default">{this.getWeatherIcon()} {this.state.temp} - {this.state.description}</h3>
                 
             </div>
         );

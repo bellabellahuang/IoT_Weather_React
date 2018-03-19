@@ -16,13 +16,14 @@ export default class MemoryGame extends Component {
                 {id: i+1, url: `https://s3.amazonaws.com/yscbuckettest/MemoryGame_images/MG-${number}.jpg`});
         }
         console.log("image numbers: ", images);
+        // console.log("image 0: ", images[0].url);
 
         // display the images
         const cardList = [];
         let count = 0;
         for (let i=1; i<=4; i++){
             for (let j=1; j<=4; j++){
-                cardList.push(<CardItem key={images[count].id} imageurl={images[count].urs} />);
+                cardList.push(<CardItem key={count+1} imageurl={images[count].url} />);
                 count++;
             }
         }

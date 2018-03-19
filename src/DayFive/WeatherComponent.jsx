@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import WeatherIcon from '../DaySix/WeatherIconList';
 // import {geolocated} from 'react-geolocated';
 const api_key = '19f2d22ace813941ead56856922e3baf';
 
@@ -22,7 +23,7 @@ export default class WeatherComponent extends Component {
                     temp: `${Math.round((json.main.temp - 273.15) * 100) / 100}°C`, 
                     description: json.weather[0].description,
                     country: json.sys.country,
-                    iconid: json.weather[0].icon
+                    iconid: json.weather[0].id
                 });
                 console.log(json);
             });
@@ -47,11 +48,16 @@ export default class WeatherComponent extends Component {
         }
     }
 
+    getWeatherIcon = () => {
+        const iconid = this.state.iconid;
+        return (<i className={`weather-icon wi wi-${WeatherIcon[iconid]}`}></i>);
+    }
+
     render () {
         return (
             <div className="weather-component">
                 <h2>Weather Report For <span className="text-danger"><b><em>{this.state.city}, {this.state.country}</em></b></span></h2>
-                <h3 className="text-primary">{this.state.temp} - {this.state.description}</h3>
+                <h3 className="text-primary">{this.getWeatherIcon()} {this.state.temp} - {this.state.description}</h3>
                 
             </div>
         );

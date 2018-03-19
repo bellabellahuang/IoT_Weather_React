@@ -12,9 +12,11 @@ export default class WeatherPage extends Component {
                 </div>
                 <div className="col-xs-6">
                     <WeatherComponent city="London, CA" />
+                    <WeatherComponent city="Beijing" />
                 </div>
                 <div className="col-xs-6">
                     <WeatherComponent coords={{latitude:35, longitude:139}} />
+                    <WeatherComponent city="Vancouver,CA" />
                 </div>          
             </div>
         );

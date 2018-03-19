@@ -6,9 +6,16 @@ export default class WeatherPage extends Component {
         return (
             <div className="weather-page">
                 <h1>Weather Page</h1>
-                <WeatherComponent city="Sarnia" />
-                <WeatherComponent coords={{latitude:35, longitude:139}} />
-                <WeatherComponent />                
+                <div className="col-xs-12">
+                    <h2>Local Weather</h2>
+                    <WeatherComponent />   
+                </div>
+                <div className="col-xs-6">
+                    <WeatherComponent city="London, CA" />
+                </div>
+                <div className="col-xs-6">
+                    <WeatherComponent coords={{latitude:35, longitude:139}} />
+                </div>          
             </div>
         );
     }

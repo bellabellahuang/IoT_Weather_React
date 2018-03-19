@@ -14,6 +14,7 @@ import ParentState from './DayFour/ParentState';
 import OptionSelect from './DayFour/OptionSelect';
 import MemoryGame from './MemoryGame/MemoryGame';
 import WeatherPage from './DayFive/WeatherPage';
+import CardItem from './MemoryGame/CardItem';
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 // import logo from './logo.svg';
@@ -34,7 +35,9 @@ class App extends Component {
               <Route  path="/ParentState" component={ParentState}/>
               <Route  path="/OptionSelect" component={OptionSelect}/>  
               <Route  path="/MemoryGame" component={MemoryGame}/> 
-              <Route  path="/WeatherPage" component={WeatherPage}/>                                       
+              <Route  path="/WeatherPage" component={WeatherPage}/>
+              <Route  path="/CardItem" component={CardItem}/>   
+
             </Switch>
           </div>
         </Router>

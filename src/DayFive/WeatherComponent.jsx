@@ -10,12 +10,20 @@ export default class WeatherComponent extends Component {
             city: props.city,
             temp: null,
             description: null,
+            country: null,
+            iconid: null
         }
     }
 
     grabWeather(apiCall){
         fetch(apiCall).then((response) => {return response.json();}).then((json) => {
-                this.setState({city:json.name, temp: `${Math.round((json.main.temp - 273.15) * 100) / 100}°C`, description: json.weather[0].description });
+                this.setState({
+                    city:json.name, 
+                    temp: `${Math.round((json.main.temp - 273.15) * 100) / 100}°C`, 
+                    description: json.weather[0].description,
+                    country: json.sys.country,
+                    iconid: json.weather[0].icon
+                });
                 console.log(json);
             });
     }
@@ -42,7 +50,7 @@ export default class WeatherComponent extends Component {
     render () {
         return (
             <div className="weather-component">
-                <h2>Weather Report For <span className="text-danger"><b><em>{this.state.city}</em></b></span></h2>
+                <h2>Weather Report For <span className="text-danger"><b><em>{this.state.city}, {this.state.country}</em></b></span></h2>
                 <h3 className="text-primary">{this.state.temp} - {this.state.description}</h3>
                 
             </div>

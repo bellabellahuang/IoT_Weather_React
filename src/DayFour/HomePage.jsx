@@ -10,7 +10,7 @@ export default class HomePage extends Component {
                 <h1>Welcome to IoT Weather</h1>
                 <OptionSelect optionsArray={["1","2","3"]} />
                 <SignInModal />
-                <RadioButtons optionsArray={["Yesterday", "Today", "Tomorrow"]} />
+                <RadioButtons optionsArray={["Yesterday", "Today", "Tomorrow", "hello"]} />
             </div>
         );
     }

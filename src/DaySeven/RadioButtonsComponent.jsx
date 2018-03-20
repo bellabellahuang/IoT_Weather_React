@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import InputComponent from '../DayOne/InputComponent';
+// import InputComponent from '../DayOne/InputComponent';
 
 export default class RadioButtonComponent extends Component {
     state = {

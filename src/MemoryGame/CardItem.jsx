@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Thumbnail } from 'react-bootstrap';
+import './MemoryGame.css';
 
 export default class CardItem extends Component {
     render () {
         return (
-            <div className="col-xs-3">
-                <div style={{"height":"200px","width": "200px"}}>
-                    <Thumbnail src={this.props.imageurl} />
-                </div>
-            </div>
+            <li className="card col-xs-3">
+                <Thumbnail src={this.props.imageurl} className="img" />
+            </li>
         );
     }
 }

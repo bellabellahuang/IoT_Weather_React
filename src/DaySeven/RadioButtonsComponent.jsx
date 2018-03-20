@@ -17,15 +17,14 @@ export default class RadioButtonComponent extends Component {
         const options = [];
         for(let i =0; i<this.props.optionsArray.length; ++i){
             options.push(
-                <div className="radio">
-                    <label>
-                    <input type="radio" name="test" key={i} 
+                <label className="col-xs-12" key={i}>
+                    <input type="radio" name="test" 
+                            key={i} 
                             value={this.props.optionsArray[i]} 
                             checked={this.state.selectedOption === `${this.props.optionsArray[i]}`}
                             onChange={this.handleOptionChange}/>
                             {this.props.optionsArray[i]}
-                    </label>
-                </div>
+                </label>
             );
         }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import OptionSelect from './OptionSelect';
 import SignInModal from '../DaySix/SignInModal';
 import RadioButtons from '../DaySeven/RadioButtonsComponent';
+import FirebaseTest from '../DaySeven/FirebaseTest';
 
 export default class HomePage extends Component {
     render () {
@@ -11,6 +12,7 @@ export default class HomePage extends Component {
                 <OptionSelect optionsArray={["1","2","3"]} />
                 <SignInModal />
                 <RadioButtons optionsArray={["Yesterday", "Today", "Tomorrow", "hello"]} />
+                <FirebaseTest />
             </div>
         );
     }

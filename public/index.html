@@ -11,6 +11,21 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    
+    <!--Firebase-->
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCuYaRmXXXweeWBJvmRkB69xtg22pbGVqk",
+        authDomain: "iot-weather-1866b.firebaseapp.com",
+        databaseURL: "https://iot-weather-1866b.firebaseio.com",
+        projectId: "iot-weather-1866b",
+        storageBucket: "iot-weather-1866b.appspot.com",
+        messagingSenderId: "669110790323"
+      };
+      firebase.initializeApp(config);
+    </script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.

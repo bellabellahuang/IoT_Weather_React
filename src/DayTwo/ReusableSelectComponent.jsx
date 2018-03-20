@@ -32,7 +32,7 @@ export default class ReusableSelect extends Component {
 
     return (
       <div className={this.props.reusableSelectClass} >
-        <Label className="col-xs-3" bsStyle="info" style={{"font-size": "20px"}}>
+        <Label className="col-xs-3" bsStyle="info" style={{"fontSize": "20px"}}>
           {this.props.label}
         </Label>
         <div className={this.props.selectorClass}>

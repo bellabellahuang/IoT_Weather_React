@@ -16,11 +16,11 @@ class InputComponent extends Component {
   // }
 
   render() {
-    console.log('this.props');
-    console.log(this.props);
+    // console.log('this.props');
+    // console.log(this.props);
     return (
       <div className="col-xs-12">
-        <Label className="col-xs-3" bsStyle="info" style={{"font-size": "20px"}}>
+        <Label className="col-xs-3" bsStyle="info" style={{"fontSize": "20px"}}>
           {this.props.labelText}
         </Label>
         <div className="col-xs-9">
@@ -33,7 +33,8 @@ class InputComponent extends Component {
             placeholder={this.props.placeholder}
             defaultValue={this.props.default}
             maxLength={this.props.maxLength}
-            onChange={(e) => {this.props.inputFunction(e.target.value)}}/>
+            onChange={(e) => {this.props.inputFunction(e.target.value)}}
+            value={this.props.inputValue}/>
         </div>
       </div>
     );

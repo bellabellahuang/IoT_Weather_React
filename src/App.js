@@ -17,6 +17,8 @@ import WeatherPage from './DayFive/WeatherPage';
 import CardItem from './MemoryGame/CardItem';
 import { Nav, NavItem } from 'react-bootstrap';
 import SignInModal from './DaySix/SignInModal';
+import RadioButtons from './DaySeven/RadioButtonsComponent';
+
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 // import logo from './logo.svg';
@@ -64,7 +66,9 @@ class App extends Component {
               <Route  path="/OptionSelect" component={OptionSelect}/>  
               <Route  path="/MemoryGame" component={MemoryGame}/> 
               <Route  path="/WeatherPage" component={WeatherPage}/>
-              <Route  path="/CardItem" component={CardItem}/>   
+              <Route  path="/CardItem" component={CardItem}/>
+              <Route  path="/RadioButtons" component={RadioButtons}/>   
+                 
             </Switch>
           </div>
         </Router>

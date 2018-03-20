@@ -5,7 +5,7 @@ export default class OptionSelect extends Component {
     constructor (props) {
         super();
         this.state = {
-            options: props.optionsArray,
+            options: props.optionsArray.sort(),
             inputValue: "",
         }
     }
@@ -20,6 +20,11 @@ export default class OptionSelect extends Component {
 
         let options = this.state.options;
         options.push(this.state.inputValue);
+        options.sort();
+
+        if(this.props.onOptionAdded){
+            this.props.onOptionAdded(options);
+        }
         this.setState({options: options, inputValue: ""});
 
         // console.log('options: ', this.state.options);

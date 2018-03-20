@@ -46,6 +46,7 @@ InputComponent.defaultProps = {
   placeholder: "placeholder",
   className: "react-input",
   inputFunction: () => {},
+  inputValue: "defaul",
 }
 
 InputComponent.propTypes = {

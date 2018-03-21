@@ -20,6 +20,7 @@ import SignInModal from './DaySix/SignInModal';
 import RadioButtons from './DaySeven/RadioButtonsComponent';
 import TicTacToeGame from './DayEight/TicTacToeGame.jsx';
 import TicTacToeExample from './DayEight/TicTacToeExample';
+import history from './DayEight/history';
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 // import logo from './logo.svg';
@@ -61,17 +62,16 @@ class App extends Component {
           <div>
             <Switch>
               <Route  exact path="/" component={HomePage}/>
-              <Route  path="/SignUp" component={SignUpPage}/>
-              <Route  path="/ReactStateTest" component={ReactStateTest}/>
-              <Route  path="/ParentState" component={ParentState}/>
-              <Route  path="/OptionSelect" component={OptionSelect}/>  
-              <Route  path="/MemoryGame" component={MemoryGame}/> 
-              <Route  path="/WeatherPage" component={WeatherPage}/>
-              <Route  path="/CardItem" component={CardItem}/>
-              <Route  path="/RadioButtons" component={RadioButtons}/>   
-              <Route  path="/TicTacToeGame" component={TicTacToeGame}/>   
-              <Route  path="/TicTacToeExample" component={TicTacToeExample}/>   
-                 
+              <Route  exact path="/SignUp" component={SignUpPage}/>
+              <Route  exact path="/ReactStateTest" component={ReactStateTest}/>
+              <Route  exact path="/ParentState" component={ParentState}/>
+              <Route  exact path="/OptionSelect" component={OptionSelect}/>  
+              <Route  exact path="/MemoryGame" component={MemoryGame}/> 
+              <Route  exact path="/WeatherPage" component={WeatherPage}/>
+              <Route  exact path="/CardItem" component={CardItem}/>
+              <Route  exact path="/RadioButtons" component={RadioButtons}/>   
+              <Route  exact path="/TicTacToeGame" component={TicTacToeGame}/>   
+              <Route  exact path="/TicTacToeExample" component={TicTacToeExample}/>   
             </Switch>
           </div>
         </Router>

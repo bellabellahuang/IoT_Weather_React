@@ -34,7 +34,8 @@ class InputComponent extends Component {
             defaultValue={this.props.default}
             maxLength={this.props.maxLength}
             onChange={(e) => {this.props.inputFunction(e.target.value)}}
-            value={this.props.inputValue}/>
+            /*value={this.props.inputValue}*/
+            />
         </div>
       </div>
     );
@@ -46,7 +47,7 @@ InputComponent.defaultProps = {
   placeholder: "placeholder",
   className: "react-input",
   inputFunction: () => {},
-  inputValue: "defaul",
+  inputValue: "default",
 }
 
 InputComponent.propTypes = {

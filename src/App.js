@@ -18,7 +18,8 @@ import CardItem from './MemoryGame/CardItem';
 import { Nav, NavItem } from 'react-bootstrap';
 import SignInModal from './DaySix/SignInModal';
 import RadioButtons from './DaySeven/RadioButtonsComponent';
-
+import TicTacToeGame from './DayEight/TicTacToeGame.jsx';
+import TicTacToeExample from './DayEight/TicTacToeExample';
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 // import logo from './logo.svg';
@@ -68,6 +69,8 @@ class App extends Component {
               <Route  path="/WeatherPage" component={WeatherPage}/>
               <Route  path="/CardItem" component={CardItem}/>
               <Route  path="/RadioButtons" component={RadioButtons}/>   
+              <Route  path="/TicTacToeGame" component={TicTacToeGame}/>   
+              <Route  path="/TicTacToeExample" component={TicTacToeExample}/>   
                  
             </Switch>
           </div>

@@ -1,0 +1,23 @@
+.FacebookSignUpIcon {
+    background-color: #355089;
+    border: none;
+    border-right: 1px solid gray;
+    padding: 6px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.facebook-button-group {
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.FacebookSignUpBtn {
+    height: 45px;
+    background-color: #355089;
+    border: none;
+    padding-top: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    color: white;
+}

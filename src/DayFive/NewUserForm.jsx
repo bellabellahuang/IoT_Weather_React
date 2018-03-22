@@ -6,6 +6,9 @@ import PasswordInput from '../DayTwo/PasswordInput';
 import OptionSelect from '../DayFour/OptionSelect';
 import ReusableSelect from '../DayTwo/ReusableSelectComponent';
 
+const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const phoneRegex = /^[\\+]?[(]?[0-9]{3}[)]?[-\s\\.]?[0-9]{3}[-\s\\.]?[0-9]{4,6}$/;
+
 export default class NewUserForm extends Component {
   constructor() {
     super();
@@ -20,7 +23,8 @@ export default class NewUserForm extends Component {
       country: null,
       provinceState: null,
       birthDate: null,
-      address: null
+      address: null,
+      errorMessage: null,
     }
   }
 
@@ -68,9 +72,45 @@ export default class NewUserForm extends Component {
     this.setState({birthDate: birthDate});
   }
 
+  addNewUser = (e) => {
+    e.preventDefault();
+    let errorMessage = "";
+    const { 
+      firstName, 
+      lastName, 
+      age, 
+      email, 
+      phoneNum, 
+      password, 
+      confirmPassword, 
+      country, 
+      provinceState, 
+      birthDate, 
+      address} = this.state;
+
+    if (!firstName){
+      // this.setState({errorMessage: "Please enter a first name"});
+      errorMessage = "Please enter a first name";
+    }else if (!lastName){
+      errorMessage = "Please enter a last name";
+    }else if (!age){
+      errorMessage = "Please enter your age";
+    }else if (!email || !emailRegex.test(email)){
+      errorMessage = "The email address entered is not a valid address";
+    }
+
+    
+    this.setState({errorMessage: errorMessage});
+
+    // this.props.signUpNewUser(this.state);
+  }
+
   render() {
     return (
-      <form>
+      <form >
+         {this.state.errorMessage ? 
+                    <div>{this.state.errorMessage}</div> : null}
+                
         <InputComponent
           labelText="First Name: "
           placeholder="first name"
@@ -112,7 +152,7 @@ export default class NewUserForm extends Component {
             selectorClass="col-xs-3" label="Province: "
             selectFunction={this.setProvinceState}/>
 
-        <button className="btn btn-danger" type="submit">Create User</button>
+        <button onClick={this.addNewUser} className="btn btn-danger" type="submit">Create User</button>
       </form>
     );
   }

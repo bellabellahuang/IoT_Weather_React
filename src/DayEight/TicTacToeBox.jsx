@@ -1,28 +1,15 @@
 import React, { Component } from 'react';
+import '../DayNine/TicTacToe.css';
 
 export default class TicTacToeBox extends Component {
+
     render () {
         return (
-            <div className="col-xs-4 box"
-                    style={{
-                    height: "100px",
-                    width: "100px",
-                    border: "0px solid black",
-                    margin: "0",
-                    padding: "0"
-                }}
-                >
-                <button 
-                    style={{
-                    height: "100px",
-                    width: "100px",
-                    margin: "0",
-                    padding: "0"
-                }}
-
-                onClick={this.props.buttonClick}
-                >X</button>
-                </div>
+                <div 
+                    className="col-xs-4 board" 
+                    style={this.props.style}
+                    onClick={() => {this.props.boardClicked(this.props.id)}}
+                    >{this.props.gameObject[this.props.id]}</div>
         );
     }
 }

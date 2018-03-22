@@ -1,0 +1,13 @@
+.board {
+    /* padding-top: 10px;  */
+    font-size: 50px;
+    height: 100px;
+}
+
+.board-btn {
+    /* padding-top: 10px;      */
+    height: 98px;
+    background-color: white;
+    border: none;
+    padding: 0px;
+}

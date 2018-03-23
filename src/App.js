@@ -21,6 +21,7 @@ import RadioButtons from './DaySeven/RadioButtonsComponent';
 import TicTacToeGame from './DayEight/TicTacToeGame.jsx';
 import TicTacToeExample from './DayEight/TicTacToeExample';
 import history from './DayEight/history';
+import Counter from './DayEight/counter';
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 // import logo from './logo.svg';
@@ -72,6 +73,7 @@ class App extends Component {
               <Route  exact path="/RadioButtons" component={RadioButtons}/>   
               <Route  exact path="/TicTacToeGame" component={TicTacToeGame}/>   
               <Route  exact path="/TicTacToeExample" component={TicTacToeExample}/>   
+              <Route  exact path="/fizzbuzz" component={Counter}/>   
             </Switch>
           </div>
         </Router>

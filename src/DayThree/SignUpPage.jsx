@@ -14,7 +14,7 @@ export default class SignUpPage extends Component {
                 }
             })
             .catch(error => {
-                this.setState({errorMessage: error});
+                this.setState({errorMessage: error.message});
             });
     }
 

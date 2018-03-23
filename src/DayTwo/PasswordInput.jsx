@@ -11,6 +11,7 @@ export default class PasswordInput extends Component {
                 className={this.props.className}
                 placeholder={this.props.placeholder}
                 maxLength={8}
+                minLength={6}
                 inputFunction = {this.props.inputFunction} />
         );
     }

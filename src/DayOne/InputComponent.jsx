@@ -33,6 +33,7 @@ class InputComponent extends Component {
             placeholder={this.props.placeholder}
             defaultValue={this.props.default}
             maxLength={this.props.maxLength}
+            minLength={this.props.minLength}
             onChange={(e) => {this.props.inputFunction(e.target.value)}}
             /*value={this.props.inputValue}*/
             />

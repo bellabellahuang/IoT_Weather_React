@@ -97,12 +97,32 @@ export default class NewUserForm extends Component {
       errorMessage = "Please enter your age";
     }else if (!email || !emailRegex.test(email)){
       errorMessage = "The email address entered is not a valid address";
+    }else if (!phoneNum){
+      errorMessage = "Enter your phone number";
+    }else if(!phoneRegex.test(phoneNum)){
+      errorMessage = "Please enter a valid phone number";
+    }else if(!password){
+      errorMessage = "Please enter a password";
+    }else if(password.length < 6){
+      errorMessage = "Password must be at least 6 characters long";
+    }else if(!confirmPassword){
+      errorMessage = "Please confirm your password";
+    }else if(!confirmPassword.length >= 6 || confirmPassword !== password){
+      errorMessage = "Your password don't match";
+    }else if(!address){
+      errorMessage = "Please enter your address";
+    }else if(!country){
+      errorMessage = "Please enter your country";
+    }else if(!provinceState){
+      errorMessage = "Please enter your province/state";
+    }else if(!birthDate){
+      errorMessage = "Please enter a valid Birth Date";
+    }else {
+      this.props.signUpNewUser(this.state);
     }
 
     
     this.setState({errorMessage: errorMessage});
-
-    // this.props.signUpNewUser(this.state);
   }
 
   render() {

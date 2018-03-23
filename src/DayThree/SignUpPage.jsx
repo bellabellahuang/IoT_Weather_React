@@ -3,13 +3,20 @@ import React, { Component } from 'react';
 import NewUserForm from '../DayFive/NewUserForm';
 import { auth, database } from 'firebase';
 import history from '../DayEight/history';
+import { omit } from 'lodash';
 
 export default class SignUpPage extends Component {
 
     createNewUser = (user) => {
+        const userWithoutWarning = omit(user, 'errorMessage');
         auth().createUserWithEmailAndPassword(user.email, user.password)
             .then((newUser) => {
                 if (newUser) {
+                    // save the user info into the database
+                    const { email, firstName, lastName, address, country, ...rest } = user;
+                    database().ref(`users/${newUser.uid}`).set({
+                        ...userWithoutWarning,
+                    });
                     console.log('newUser: ', newUser);
                 }
             })

@@ -6,6 +6,7 @@ import PasswordInput from '../DayTwo/PasswordInput';
 import OptionSelect from '../DayFour/OptionSelect';
 import ReusableSelect from '../DayTwo/ReusableSelectComponent';
 
+
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const phoneRegex = /^[\\+]?[(]?[0-9]{3}[)]?[-\s\\.]?[0-9]{3}[-\s\\.]?[0-9]{4,6}$/;
 
@@ -115,8 +116,8 @@ export default class NewUserForm extends Component {
       errorMessage = "Please enter your country";
     }else if(!provinceState){
       errorMessage = "Please enter your province/state";
-    }else if(!birthDate){
-      errorMessage = "Please enter a valid Birth Date";
+    // }else if(!birthDate){
+    //   errorMessage = "Please enter a valid Birth Date";
     }else {
       this.props.signUpNewUser(this.state);
     }

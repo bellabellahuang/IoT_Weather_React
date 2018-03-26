@@ -25,6 +25,12 @@ export default class MemoryGame extends Component {
         return array;
     }
 
+    // click on the image, change imageurl={images[count].url}
+    clickedImage = () =>{
+        // console.log('e.target');
+        // console.log(e.target);
+    }
+
     render() {
         // generate the two same sets of images randomly
         const images = [];
@@ -36,17 +42,26 @@ export default class MemoryGame extends Component {
                 {id: i, url: `https://s3.amazonaws.com/yscbuckettest/MemoryGame_images/MG-${number}.jpg`},
                 {id: i+1, url: `https://s3.amazonaws.com/yscbuckettest/MemoryGame_images/MG-${number}.jpg`});
         }
-        console.log("image numbers: ", images);
+
+        
+        // console.log("image numbers: ", images);
 
         // modify the images to display randomly
-        console.log("randomize array: ", this.shuffle(images));
+        const randomImage = this.shuffle(images);
+        // console.log("randomize array: ", this.shuffle(images));
 
         // display the images
         const cardList = [];
         let count = 0;
-        for (let i=1; i<=4; i++){
-            for (let j=1; j<=4; j++){
-                cardList.push(<CardItem key={count+1} imageurl={images[count].url} />);
+        for (let i=0; i<=3; i++){
+            for (let j=0; j<=3; j++){
+                cardList.push(
+                    <CardItem key={count+1} 
+                    row = {i}
+                    column = {j}
+                    imageList = {randomImage}
+                    imageurl='http://hdwallpaper2013.com/wp-content/uploads/2013/02/Blue-Background-Images-HD-Wallpaper.jpg'
+                    changeImage={this.clickedImage}  />);
                 count++;
             }
         }
@@ -54,7 +69,7 @@ export default class MemoryGame extends Component {
         return (
             <div className="App">
                 <h1>Memory Game</h1>
-                <ul className="col-xs-12 cardList">
+                <ul className="col-xs-12 cardList" >
                     {cardList}
                 </ul>
             </div>

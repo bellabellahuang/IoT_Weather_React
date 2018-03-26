@@ -8,12 +8,12 @@ import { omit } from 'lodash';
 export default class SignUpPage extends Component {
 
     createNewUser = (user) => {
-        const userWithoutWarning = omit(user, 'errorMessage');
+        const userWithoutWarning = omit(user, ['errorMessage', 'password', 'confirmPassword']);
         auth().createUserWithEmailAndPassword(user.email, user.password)
             .then((newUser) => {
                 if (newUser) {
                     // save the user info into the database
-                    const { email, firstName, lastName, address, country, ...rest } = user;
+                    // const { email, firstName, lastName, address, country, ...rest } = user;
                     database().ref(`users/${newUser.uid}`).set({
                         ...userWithoutWarning,
                     });

@@ -18,14 +18,18 @@ export default class BirthdateSelector extends Component {
     setDay = (e) => {
         // this.state["selectedDay"] = e.target.value;
         // console.log("selectedDay: ", this.state["selectedDay"]);
-        this.setState({selectedDay: e.target.value});
+        this.setState({selectedDay: e.target.value}, () => {
+            this.selectBirthDate();
+        });
     }
 
     // update the selectedMonth when it is changed
     setMonth = (e) => {
         // this.state["selectedMonth"] = e.target.value;
         // console.log("selectedMonth: ", this.state["selectedMonth"]);
-        this.setState({selectedMonth: e.target.value});
+        this.setState({selectedMonth: e.target.value}, () => {
+            this.selectBirthDate();
+        });
     }
 
     // update the selectedYear when it is changed
@@ -46,7 +50,20 @@ export default class BirthdateSelector extends Component {
         // console.log(isLeapYear);
 
         // update the state
-        this.setState({selectedYear: e.target.value, isLeapYear: isLeapYear});
+        this.setState({selectedYear: e.target.value, isLeapYear: isLeapYear}, () => {
+            this.selectBirthDate();
+        });
+    }
+
+    selectBirthDate = () => {
+        if(this.state.selectedDay && this.state.selectedMonth && this.state.selectedYear){
+            console.log('this.state');
+            console.log(this.state);
+            const date = new Date(`${this.state.selectedDay} ${this.state.selectedMonth} ${this.state.selectedYear}`);
+            console.log('date');
+            console.log(date);
+            this.props.changeDate(date.toDateString());
+        }
     }
 
     render () {

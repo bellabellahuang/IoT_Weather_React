@@ -140,7 +140,7 @@ export default class TicTacToeExample extends Component {
             </div>
             {/* child Component for each tile of the game */}
             <button onClick={this.startGame}>{this.state.startBtnText}</button>
-            <div>Current Turn: {this.state.turn}</div>
+            {/*<div>Current Turn: {this.state.turn}</div>*/}
             </div>
 
             

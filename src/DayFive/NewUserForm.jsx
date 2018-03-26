@@ -26,6 +26,7 @@ export default class NewUserForm extends Component {
       birthDate: null,
       address: null,
       errorMessage: null,
+      listOfOptions: null,
     }
   }
 
@@ -71,6 +72,10 @@ export default class NewUserForm extends Component {
 
   setBirthDate = (birthDate) => {
     this.setState({birthDate: birthDate});
+  }
+
+  updateListOfProvices = (options) => {
+    this.setState({listOfOptions: options});
   }
 
   addNewUser = (e) => {
@@ -163,14 +168,14 @@ export default class NewUserForm extends Component {
           type="password"
           placeholder="password (no more than 8 characters)"
           inputFunction={this.setConfirmPassword}/>
-        <BirthdateSelector minYear={1900} inputFunction={this.setBirthDate}/>
+        <BirthdateSelector minYear={1900} changeDate={this.setBirthDate}/>
         <InputComponent labelText="Address:" inputFunction={this.setAddress}/>
         <ReusableSelect 
-            optionsArray={["China", "Canada", "Janpan", "India"]} selectorClass="col-xs-9" label="Country: "
+            optionsArray={['Canada', 'China', 'India']} selectorClass="col-xs-9" label="Country: "
             selectFunction={this.setCountry} />
         <OptionSelect 
             optionsArray={["ON", "BC", "AB"]} 
-            selectorClass="col-xs-3" label="Province: "
+            selectorClass="col-xs-6" label="Province: "
             selectFunction={this.setProvinceState}/>
 
         <button onClick={this.addNewUser} className="btn btn-danger" type="submit">Create User</button>

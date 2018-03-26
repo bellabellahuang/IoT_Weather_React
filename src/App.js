@@ -22,8 +22,9 @@ import TicTacToeGame from './DayEight/TicTacToeGame.jsx';
 import TicTacToeExample from './DayEight/TicTacToeExample';
 import history from './DayEight/history';
 import Counter from './DayEight/counter';
-
+import firebase from 'firebase';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { NavDropdown, MenuItem } from 'react-bootstrap';
 // import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -32,6 +33,8 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 class App extends Component {
   state = {
     showLoginModal: false,
+    currentUser: null,
+    imageUrl: 'http://hdwallpaper2013.com/wp-content/uploads/2013/02/Blue-Background-Images-HD-Wallpaper.jpg',
   }
 
   openSignInModal = () => {
@@ -40,6 +43,25 @@ class App extends Component {
 
   closeSignInModal = () => {
     this.setState({showLoginModal: false});
+  }
+
+  componentWillMount () {
+    if(this.state.currentUser !== firebase.auth().currentUser){
+      this.setState({currentUser: firebase.auth().currentUser});
+    }
+
+    firebase.auth().onAuthStateChanged(
+      (user) => {
+        if(user) {
+          this.setState({currentUser: user, showLoginModal: false});
+        }else{
+          this.setState({currentUser: null});
+        }
+      });
+  }
+
+  signOut = () => {
+    firebase.auth().signOut();
   }
 
   render() {
@@ -55,9 +77,22 @@ class App extends Component {
           <NavItem eventKey={3} href="/SignUp">
             Sign Up
           </NavItem>
-          <NavItem eventKey={4} onClick={this.openSignInModal}>
-            Sign In
-          </NavItem>
+          {!this.state.currentUser ?
+            <NavItem eventKey={4} onClick={this.openSignInModal}>
+              Sign In
+            </NavItem>
+            : 
+            [<NavDropdown eventKey={5} key={5} id={1} title={this.state.currentUser.displayName || this.state.currentUser.email}>
+              <MenuItem eventKey={5.1} key={5.1}> Profile Page
+              </MenuItem>
+              <MenuItem eventKey={5.2} key={5.2} onClick={this.signOut}> Sign Out
+              </MenuItem>
+            </NavDropdown>,
+            <NavItem eventKey={6} key={6}>
+            <img src={this.state.currentUser && this.state.currentUser.photoURL || this.state.imageUrl} style={{height: "20px", width: "20px"}} />
+          </NavItem>]
+
+          }
         </Nav>
         <Router>
           <div>

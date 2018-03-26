@@ -36,9 +36,11 @@ export default class ReusableSelect extends Component {
           {this.props.label}
         </Label>
         <div className={this.props.selectorClass}>
-        <select onChange={(e) => {this.props.selectFunction(e.target.value)}} className="form-control">
+        <select onChange={(e) => {this.props.selectFunction(e.target.value)}} className="form-control" defaultValue={this.props.defaultOption}>
           {options}
         </select>
+        <option hidden>
+        </option>
         </div>
       </div>
     );
@@ -54,4 +56,5 @@ ReusableSelect.defaultProps = {
   optionsArray: ['1', '2', '3', '4', '5'],
   selectorClass: "col-xs-9",
   reusableSelectClass: "col-xs-12",
+  defaultOption: "Country",
 }

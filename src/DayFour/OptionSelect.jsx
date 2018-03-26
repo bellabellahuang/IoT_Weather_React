@@ -37,7 +37,8 @@ export default class OptionSelect extends Component {
                     optionsArray={this.state.options} 
                     selectorClass={this.props.selectorClass} label={this.props.label}
                     selectFunction={this.props.selectFunction}
-                    reusableSelectClass="col-xs-6" />
+                    reusableSelectClass="col-xs-6"
+                    style={{margin: "0px"}} />
                 <div>
                     <input className="form-control col-xs-3" onChange={this.changeInput} value={this.state.inputValue}></input>
                     <button className="btn btn-default col-xs-3" onClick={this.addNewOption}>Add New Option</button>

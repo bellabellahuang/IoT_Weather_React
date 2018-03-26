@@ -23,3 +23,9 @@ PasswordInput.propTypes = {
     type: PropTypes.string,
     placeholder: PropTypes.string,
 }
+
+PasswordInput.defaultProps = {
+    label: "Password",
+    placeholder: "password",
+    type: "password",
+}

@@ -121,8 +121,8 @@ export default class NewUserForm extends Component {
       errorMessage = "Please enter your country";
     }else if(!provinceState){
       errorMessage = "Please enter your province/state";
-    // }else if(!birthDate){
-    //   errorMessage = "Please enter a valid Birth Date";
+    }else if(!birthDate){
+      errorMessage = "Please enter a valid Birth Date";
     }else {
       this.props.signUpNewUser(this.state);
     }

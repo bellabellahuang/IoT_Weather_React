@@ -26,6 +26,7 @@ import firebase from 'firebase';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { NavDropdown, MenuItem } from 'react-bootstrap';
 import Profile from './Day12/Profile';
+import PageNotFound from './Day12/PageNotFound';
 // import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -35,7 +36,7 @@ class App extends Component {
   state = {
     showLoginModal: false,
     currentUser: null,
-    imageUrl: 'http://hdwallpaper2013.com/wp-content/uploads/2013/02/Blue-Background-Images-HD-Wallpaper.jpg',
+    imageUrl: 'userImage.png',
   }
 
   openSignInModal = () => {
@@ -71,7 +72,7 @@ class App extends Component {
   }
 
   addBackgroundToApp = (pathname) => {
-    console.log('addBackgroundToApp');
+    // console.log('addBackgroundToApp');
     const body = document.getRootNode().body;
     
     switch(pathname){
@@ -85,9 +86,11 @@ class App extends Component {
         body.style.backgroundImage = "";
       break;
       case "/Profile":
-        body.style.backgroundImage = "";
+        body.style.backgroundImage = "url('Colorful-background.jpg')";
       break;
       default:
+        body.style.backgroundImage = "url('notfound.jpg')";
+        body.style.backgroundSize = "cover";
       break;
     }
   }
@@ -117,7 +120,8 @@ class App extends Component {
               </MenuItem>
             </NavDropdown>,
             <NavItem eventKey={6} key={6}>
-            <img src={this.state.currentUser && this.state.currentUser.photoURL || this.state.imageUrl} style={{height: "20px", width: "20px"}} />
+            <img src={(this.state.currentUser && this.state.currentUser.photoURL) || this.state.imageUrl} style={{height: "20px", width: "20px"}} 
+                  alt="current user pic"/>
           </NavItem>]
 
           }
@@ -138,6 +142,7 @@ class App extends Component {
               <Route  exact path="/TicTacToeExample" component={TicTacToeExample}/>   
               <Route  exact path="/fizzbuzz" component={Counter}/>   
               <Route  exact path="/Profile" component={Profile}/>   
+              <Route  component={PageNotFound}/>   
             </Switch>
           </div>
         </Router>

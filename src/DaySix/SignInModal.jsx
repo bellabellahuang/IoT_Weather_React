@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Clearfix } from 'react-bootstrap';
-import InputComponent from '../DayOne/InputComponent';
-import PasswordComponent from '../DayTwo/PasswordInput';
+// import InputComponent from '../DayOne/InputComponent';
+// import PasswordComponent from '../DayTwo/PasswordInput';
 import FacebookButton from '../DayEight/FacebookButton';
 import SignInForm from '../DayEleven/SignInForm';
 

@@ -66,8 +66,8 @@ export default class TicTacToeExample extends Component {
         let gameObject = this.state.gameObject;
         const winner = this.state.winner;
         for (let i = 1; i <= 8; i++ ){
-            const [a, b, c] = winner[i];
-            console.log("[a, b, c]: " [a, b, c]);
+            const [a,b,c] = winner[i];
+            console.log("[a, b, c]: ", [a,b,c]);
             if(gameObject[a] && gameObject[a] === gameObject[b] && gameObject[a] === gameObject[c]){
                 console.log(gameObject[a], " win");
             }

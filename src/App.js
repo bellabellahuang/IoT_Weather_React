@@ -25,6 +25,7 @@ import Counter from './DayEight/counter';
 import firebase from 'firebase';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { NavDropdown, MenuItem } from 'react-bootstrap';
+import Profile from './Day12/Profile';
 // import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -110,7 +111,7 @@ class App extends Component {
             </NavItem>
             : 
             [<NavDropdown eventKey={5} key={5} id={1} title={this.state.currentUser.displayName || this.state.currentUser.email}>
-              <MenuItem eventKey={5.1} key={5.1}> Profile Page
+              <MenuItem eventKey={5.1} key={5.1} href="/Profile" onClick={() => history.push("/Profile")} >Profile Page
               </MenuItem>
               <MenuItem eventKey={5.2} key={5.2} onClick={this.signOut}> Sign Out
               </MenuItem>
@@ -136,6 +137,7 @@ class App extends Component {
               <Route  exact path="/TicTacToeGame" component={TicTacToeGame}/>   
               <Route  exact path="/TicTacToeExample" component={TicTacToeExample}/>   
               <Route  exact path="/fizzbuzz" component={Counter}/>   
+              <Route  exact path="/Profile" component={Profile}/>   
             </Switch>
           </div>
         </Router>

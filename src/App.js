@@ -46,6 +46,7 @@ class App extends Component {
   }
 
   componentWillMount () {
+    this.addBackgroundToApp(history.location.pathname);
     if(this.state.currentUser !== firebase.auth().currentUser){
       this.setState({currentUser: firebase.auth().currentUser});
     }
@@ -58,23 +59,49 @@ class App extends Component {
           this.setState({currentUser: null});
         }
       });
+
+    history.listen((location) => {
+      this.addBackgroundToApp(location.pathname);
+    });
   }
 
   signOut = () => {
     firebase.auth().signOut();
   }
 
+  addBackgroundToApp = (pathname) => {
+    console.log('addBackgroundToApp');
+    const body = document.getRootNode().body;
+    
+    switch(pathname){
+      case "/":
+        body.style.backgroundImage = "";
+      break;
+      case "/WeatherPage":
+        body.style.backgroundImage = "url('sky-background.jpg')";
+      break;
+      case "/SignUp":
+        body.style.backgroundImage = "";
+      break;
+      case "/Profile":
+        body.style.backgroundImage = "";
+      break;
+      default:
+      break;
+    }
+  }
+
   render() {
     return (
       <div className="App col-xs-12">
         <Nav bsStyle="pills">
-          <NavItem eventKey={1} href="/">
+          <NavItem eventKey={1} href="/" onClick={() => history.push("/")}>
             Home
           </NavItem>
-          <NavItem eventKey={2} href="/WeatherPage">
+          <NavItem eventKey={2} href="/WeatherPage" onClick={() => history.push("/WeatherPage")}>
             Weather
           </NavItem>
-          <NavItem eventKey={3} href="/SignUp">
+          <NavItem eventKey={3} href="/SignUp" onClick={() => history.push("/SignUp")}>
             Sign Up
           </NavItem>
           {!this.state.currentUser ?

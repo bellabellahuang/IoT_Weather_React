@@ -17,6 +17,7 @@ export default class SignUpPage extends Component {
                     database().ref(`users/${newUser.uid}`).set({
                         ...userWithoutWarning,
                     });
+                    history.push('/Home');
                     console.log('newUser: ', newUser);
                 }
             })

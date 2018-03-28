@@ -110,8 +110,8 @@ export default class BirthdateSelector extends Component {
 
         return (
             <div className="col-xs-12">
-                <Label className="col-xs-3" bsStyle="info" style={{"fontSize": "20px"}}>
-                    Birth Date:
+                <Label className="col-xs-3" bsStyle={this.props.labelStyle} style={{"fontSize": "20px"}}>
+                    Birth Date
                 </Label>
                 <div className="col-xs-3"> 
                     <select defaultValue="Day" onChange={this.setDay} className="form-control">
@@ -139,7 +139,7 @@ export default class BirthdateSelector extends Component {
                 </div>
                 
                 <div className="col-xs-3">
-                    <select defaultValue="Year" onChange={this.setYear} className="form-control">
+                    <select defaultValue={this.props.defaultYear} onChange={this.setYear} className="form-control">
                         <option value="Year" disabled hidden>Year</option>
                         {yearOptions}
                     </select>
@@ -151,8 +151,11 @@ export default class BirthdateSelector extends Component {
 
 BirthdateSelector.defaultProps = {
     minYear: 1900,
+    labelStyle: 'info',
+    defaultYear: 'Year',
 }
 
 BirthdateSelector.propTypes = {
     minYear: PropTypes.number,
+    defaultYear: PropTypes.string,
 }

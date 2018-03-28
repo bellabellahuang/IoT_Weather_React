@@ -20,7 +20,7 @@ class InputComponent extends Component {
     // console.log(this.props);
     return (
       <div className="col-xs-12">
-        <Label className="col-xs-3" bsStyle="info" style={{"fontSize": "20px"}}>
+        <Label className="col-xs-3" bsStyle={this.props.labelStyle} style={{"fontSize": "20px"}}>
           {this.props.labelText}
         </Label>
         <div className="col-xs-9">
@@ -35,7 +35,7 @@ class InputComponent extends Component {
             maxLength={this.props.maxLength}
             minLength={this.props.minLength}
             onChange={(e) => {this.props.inputFunction(e.target.value)}}
-            /*value={this.props.inputValue}*/
+            value={this.props.inputValue}
             />
         </div>
       </div>
@@ -49,6 +49,7 @@ InputComponent.defaultProps = {
   className: "react-input",
   inputFunction: () => {},
   inputValue: "default",
+  labelStyle: "info",
 }
 
 InputComponent.propTypes = {

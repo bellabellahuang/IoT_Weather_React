@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Thumbnail } from 'react-bootstrap';
 import firebase, { database } from 'firebase';
+import InputComponent from '../DayOne/InputComponent';
+import BirthdateSelector from '../DayThree/BirthdateSelector';
 import './Profile.css';
 
 export default class Profile extends Component {
     state = {
         currentUser: null,
         imageUrl: 'userImage.png',
+        userData: null,
     }
 
     componentWillMount () {
@@ -40,11 +43,20 @@ export default class Profile extends Component {
 
     getUserInfo = (uid) => {
         database().ref(`users/${uid}`)
-            .on('value', (snapshot) => {
-                console.log('snapshot.val()');
-                console.log(snapshot.val());
+            .once('value', (snapshot) => {
+                // console.log('snapshot.val()');
+                // console.log(snapshot.val());
+                if(snapshot.val()){
+                    this.setState({userData: {...snapshot.val()}}, () => {console.log(this.state);});
+                }
             });
         
+    }
+
+    saveChanges = () => {
+        console.log('save changes');
+        // let updates = {};
+        // updates[`users/${this.state.currentUser.uid}`] = this.state.userData;
     }
 
     render (){
@@ -57,7 +69,24 @@ export default class Profile extends Component {
                     />
                 </div>
                 { this.state.currentUser ? <h2 className="text-primary">{this.state.currentUser.displayName || this.state.currentUser.email}</h2> : null }
-                   
+                
+
+                <div>
+                    <InputComponent labelText="First Name" labelStyle="danger" inputValue={this.state.userData && this.state.userData.firstName} />
+                    <InputComponent labelText="Last Name" labelStyle="danger" inputValue={this.state.userData && this.state.userData.lastName} />
+                    <InputComponent labelText="Age" labelStyle="danger" inputValue={this.state.userData && this.state.userData.age} />
+                    <InputComponent labelText="Birth Date" labelStyle="danger" inputValue={this.state.userData && this.state.userData.birthDate} />
+                    <BirthdateSelector labelStyle="danger" defaultYear={this.state.userDate && new Date(this.state.userData.birthDate).getFullYear()} />
+                    {console.log('this.state.userDate && Date(this.state.userData.birthDate).getFullYear()')}
+                    {console.log(this.state.userData && new Date(this.state.userData.birthDate).getFullYear())}
+                    <InputComponent labelText="Email" labelStyle="danger" inputValue={this.state.userData && this.state.userData.email} />
+                    <InputComponent labelText="Phone Number" labelStyle="danger" inputValue={this.state.userData && this.state.userData.phoneNum} />
+                    <InputComponent labelText="Address" labelStyle="danger" inputValue={this.state.userData && this.state.userData.address} />
+                    <InputComponent labelText="Province/State" labelStyle="danger" inputValue={this.state.userData && this.state.userData.provinceState} />
+                    <InputComponent labelText="Country" labelStyle="danger" inputValue={this.state.userData && this.state.userData.country} />
+
+                    <button onClick={this.saveChanges} className="btn btn-warning" type="submit">Save Changes</button>
+                </div>
             </div>
         );
     }

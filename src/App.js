@@ -27,6 +27,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { NavDropdown, MenuItem } from 'react-bootstrap';
 import Profile from './Day12/Profile';
 import PageNotFound from './Day12/PageNotFound';
+import FavouriteWeather from './Day13/FavouriteWeather';
 // import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -88,6 +89,9 @@ class App extends Component {
       case "/Profile":
         body.style.backgroundImage = "url('Colorful-background.jpg')";
       break;
+      case "/FavouriteWeather":
+        body.style.backgroundImage = "";
+      break;
       default:
         body.style.backgroundImage = "url('notfound.jpg')";
         body.style.backgroundSize = "cover";
@@ -104,6 +108,9 @@ class App extends Component {
           </NavItem>
           <NavItem eventKey={2} href="/WeatherPage" onClick={() => history.push("/WeatherPage")}>
             Weather
+          </NavItem>
+          <NavItem eventKey={7} href="/FavouriteWeather" onClick={() => history.push("/FavouriteWeather")}>
+            Favourite Weather
           </NavItem>
           <NavItem eventKey={3} href="/SignUp" onClick={() => history.push("/SignUp")}>
             Sign Up
@@ -142,6 +149,12 @@ class App extends Component {
               <Route  exact path="/TicTacToeExample" component={TicTacToeExample}/>   
               <Route  exact path="/fizzbuzz" component={Counter}/>   
               <Route  exact path="/Profile" component={Profile}/>   
+              <Route  exact path="/FavouriteWeather" 
+                      component={() => 
+                        <FavouriteWeather 
+                          currentUser={this.state.currentUser}
+                          openSignInModal={this.openSignInModal} />}
+              /> 
               <Route  component={PageNotFound}/>   
             </Switch>
           </div>

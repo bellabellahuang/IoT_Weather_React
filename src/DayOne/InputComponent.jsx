@@ -35,7 +35,7 @@ class InputComponent extends Component {
             maxLength={this.props.maxLength}
             minLength={this.props.minLength}
             onChange={(e) => {this.props.inputFunction(e.target.value)}}
-            value={this.props.inputValue}
+            /*value={this.props.inputValue}*/
             />
         </div>
       </div>

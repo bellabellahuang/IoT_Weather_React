@@ -18,6 +18,7 @@ export default class WeatherComponent extends Component {
 
     grabWeather(apiCall){
         fetch(apiCall).then((response) => {return response.json();}).then((json) => {
+            if(json && json.weather){
                 this.setState({
                     city:json.name, 
                     temp: `${Math.round((json.main.temp - 273.15) * 100) / 100}°C`, 
@@ -26,6 +27,10 @@ export default class WeatherComponent extends Component {
                     iconid: json.weather[0].id
                 });
                 console.log(json);
+            }else {
+                
+            }
+                
             });
     }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import WeatherIcon from '../DaySix/WeatherIconList';
+import { withState, compose, lifecycle } from 'recompose';
 // import {geolocated} from 'react-geolocated';
 const api_key = '19f2d22ace813941ead56856922e3baf';
 
@@ -28,9 +29,8 @@ export default class WeatherComponent extends Component {
                 });
                 console.log(json);
             }else {
-                
+                this.setState({description: `Unable to query location ${this.props.city}`});
             }
-                
             });
     }
 
@@ -83,3 +83,60 @@ WeatherComponent.propTypes = {
         longitude: PropTypes.number,
     }),
 }
+
+const NewWeatherComponent = ({
+    city,
+    index,
+    removeFavourite,
+    description,
+    setDescription,
+    country,
+    setCountry,
+    iconid,
+    setIconid,
+    temp,
+    setTemp
+}) => {
+    const grabWeather = (apiCall) => {
+        fetch(apiCall).then((response) => {return response.json();}).then((json) => {
+            if(json && json.weather){
+                this.setState({
+                    city:json.name, 
+                    temp: `${Math.round((json.main.temp - 273.15) * 100) / 100}°C`, 
+                    description: json.weather[0].description,
+                    country: json.sys.country,
+                    iconid: json.weather[0].id
+                });
+                console.log(json);
+            }else {
+                this.setState({description: `Unable to query location ${this.props.city}`});
+            }
+            });
+    }
+
+    return (
+        <div className="weather-component">
+                <h2>Weather Report For <span className="text-danger"><b><em>{this.state.city}, {this.state.country}</em></b></span></h2>
+                <h3 className="text-default">{this.getWeatherIcon()} {this.state.temp} - {this.state.description}</h3>
+        </div>
+    );
+}
+
+// city: props.city,
+//             temp: null,
+//             description: null,
+//             country: null,
+//             iconid: null
+const NewWeatherComponentWithState = compose(
+    withState('description', 'setDescription'),
+    withState('city', 'setCity'),
+    withState('temp', 'setTemp'),
+    withState('country', 'setCountry'),
+    withState('iconid', 'setIconid'),
+    lifecycle({
+        componentWillMount () {
+            
+        }
+    }),
+    )(NewWeatherComponent);
+export {NewWeatherComponent};

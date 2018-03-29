@@ -27,16 +27,16 @@ export default class Profile extends Component {
             (user) => {
                 if(user) {
                     this.setState({currentUser: user});
-                    console.log('this.state.currentUser');
-                    console.log(this.state.currentUser);
+                    // console.log('this.state.currentUser');
+                    // console.log(this.state.currentUser);
                     let uid = this.state.currentUser.uid;
-                    console.log('uid');
-                    console.log(uid);
+                    // console.log('uid');
+                    // console.log(uid);
                     this.getUserInfo(uid);
                 }else{
                     this.setState({currentUser: null});
-                    console.log('this.state.currentUser');
-                    console.log(this.state.currentUser);
+                    // console.log('this.state.currentUser');
+                    // console.log(this.state.currentUser);
                 }
             });
     }
@@ -59,6 +59,10 @@ export default class Profile extends Component {
         // updates[`users/${this.state.currentUser.uid}`] = this.state.userData;
     }
 
+    userDateUpdate = (updatedText) => {
+        this.setState({});
+    }
+
     render (){
         return (
             <div className="col-xs-12 profile">
@@ -76,9 +80,6 @@ export default class Profile extends Component {
                     <InputComponent labelText="Last Name" labelStyle="danger" inputValue={this.state.userData && this.state.userData.lastName} />
                     <InputComponent labelText="Age" labelStyle="danger" inputValue={this.state.userData && this.state.userData.age} />
                     <InputComponent labelText="Birth Date" labelStyle="danger" inputValue={this.state.userData && this.state.userData.birthDate} />
-                    <BirthdateSelector labelStyle="danger" defaultYear={this.state.userDate && new Date(this.state.userData.birthDate).getFullYear()} />
-                    {console.log('this.state.userDate && Date(this.state.userData.birthDate).getFullYear()')}
-                    {console.log(this.state.userData && new Date(this.state.userData.birthDate).getFullYear())}
                     <InputComponent labelText="Email" labelStyle="danger" inputValue={this.state.userData && this.state.userData.email} />
                     <InputComponent labelText="Phone Number" labelStyle="danger" inputValue={this.state.userData && this.state.userData.phoneNum} />
                     <InputComponent labelText="Address" labelStyle="danger" inputValue={this.state.userData && this.state.userData.address} />

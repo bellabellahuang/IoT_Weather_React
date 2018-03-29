@@ -9,11 +9,12 @@ export default class FavouriteWeather extends React.Component {
         favouriteLocation: [],
     }
 
+    // sync the favourite locations to the firebase database
     componentDidMount () {
         const currentUser = this.props && this.props.currentUser;
         this.ref = base.syncState(`users/${currentUser && currentUser.uid}/favouriteLocations`, {
             context: this,
-            state: 'favouriteLocations'
+            state: 'favouriteLocation'
         });
     }
 
@@ -23,13 +24,26 @@ export default class FavouriteWeather extends React.Component {
         }
     }
 
+    removeFavourite = (index) => {
+        if (typeof index === "number"){
+            this.setState({
+                favouriteLocation: [
+                    ...this.state.favouriteLocation.slice(0, index),
+                    ...this.state.favouriteLocation.slice(index+1)
+                ]
+            });
+        }
+    }
+
     render () {
         const favouriteWeatherLocations = [];
         if(this.state.favouriteLocation && this.state.favouriteLocation.length > 0){
             this.state.favouriteLocation.forEach((location,i) => {
                 favouriteWeatherLocations.push(
                     <div key={location} className="col-xs-6 weather-box" style={{ height: "135px"}}>
-                        <WeatherComponent city={location} index={i} />
+                        <WeatherComponent 
+                            city={location} index={i} 
+                            removeFavourite={this.removeFavourite}/>
                     </div>
                 );
             });
@@ -61,6 +75,7 @@ export default class FavouriteWeather extends React.Component {
                 }
 
                 <AddFavouriteWeather addNewLocation={this.addNewLocation} />
+                {favouriteWeatherLocations}
             </div>
         );
     }

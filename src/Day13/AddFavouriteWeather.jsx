@@ -16,13 +16,15 @@ export default class AddFavouriteWeather extends Component {
                         className="form-control"
                         placeholder="Add a new favourite location"
                         onChange={(e) => this.setState({newLocationText: e.target.value})}
+                        value={newLocationText}
                     />
                 </div>
                 <div className="col-xs-3">
                     <button 
                         className="btn btn-default"
                         disabled={!newLocationText}
-                        onClick={() => this.props.addNewLocation(newLocationText)}>
+                        onClick={() => {this.props.addNewLocation(newLocationText);
+                                        this.setState({newLocationText: ""});}}>
                         Add Location
                     </button>
                 </div>
